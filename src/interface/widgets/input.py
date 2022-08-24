@@ -12,7 +12,7 @@ class CMD(TextInput):
         super().__init__()
         self.title = "Command Area"
         self.placeholder = "Enter command [see help for more]"
-        self.style = "yellow"
+        self.style = "bright_yellow"
         self.border_style = "cyan"
 
 

@@ -117,12 +117,25 @@ class MultipleWidgetsWindowView(View, layout=VerticalLayout):
         await self.arrange_widgets()
 
 
-class ListViewUo(ScrollView):
-    def __init__(
-        self, widgets: List[Widget | RenderableType] | None = None, *args, **kwargs
-    ) -> None:
+from .input import CMD
+
+
+class PlaylistView(ScrollView):
+    def __init__(self, db, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.widgets_list = widgets
+        self.db = db
+        # self.widgets_list = [
+        #     PlaylistButton(
+        #         ("Liked Songs", self.db.get_hotkeys("liked_songs")[1]),
+        #         "liked_songs",
+        #     )
+        # ] + [
+        #     PlaylistButton((x[1], self.db.get_hotkeys(x[0])[1]), x[0])
+        #     for x in self.db.get_playlists()
+        # ]
+
+        self.widgets_list = [*[CMD() for i in range(30)]]
+
         self.window = MultipleWidgetsWindowView(self.widgets_list)
 
     def refresh_all(self):
@@ -158,7 +171,7 @@ class PlaylistButton(Button):
     def render(self) -> Panel:
         return Panel(
             f"[b]{self.label[1]}[/b]",
-            style=("on red" if self.mouse_over else "cyan"),
+            style=("on bright_yellow" if self.mouse_over else "cyan"),
             title=self.label[0],
         )
 
