@@ -29,17 +29,26 @@ class MainView(ScrollView):
                 [italic]Here are a few examples:[/italic]
             
                 >> [light_cyan1]Invoke save by pressing 'ctrl' and 'l' together[/light_cyan1] 
-                            -> [yellow]ctrl+l[/yellow]
+                            -> [green_yellow]ctrl+l[/green_yellow]
                 >> [light_cyan1]Invoke save by pressing 'ctrl' and 'shift' and 'a' and 'b' together[/light_cyan1]
-                            -> [yellow]ctrl+shift+a+b[/yellow]
+                            -> [green_yellow]ctrl+shift+a+b[/green_yellow]
                 >> [light_cyan1]Invoke save by media key - 'media volume up` and 'media volume down' together[/light_cyan1]
-                            -> [yellow]media_volume_down+media_volume_up[/yellow]
+                            -> [green_yellow]media_volume_down+media_volume_up[/green_yellow]
                 >> [light_cyan1]Invoke save with one letter[/light_cyan1] 
-                            -> [yellow]f[/yellow]
-                >> I don't want to invoke a playlist with any key
-                            -> Just leave it blank or 'none'
+                            -> [green_yellow]f[/green_yellow]
+                >> [light_cyan1]I don't want to invoke a playlist with any key[/light_cyan1]
+                            -> [green_yellow]Just leave it blank or 'none'[/green_yellow]
         
+        [cyan1]What's on the right side?[/cyan1]
         
+            > [dark_slate_gray3]The right hand side pane is a quick control center.[/dark_slate_gray3]
+            
+                >> [light_cyan1]It consists of buttons for starting the process, stopping it or restarting, etc.[/light_cyan1]
+
+        
+        [cyan1]What commands can I use[/cyan1]
+        
+            > [dark_slate_gray3]To see a list of available commands, type [bright_yellow]help[/bright_yellow] in the command area and hit enter[/dark_slate_gray3]
 """
 
         return Text.from_markup(text)

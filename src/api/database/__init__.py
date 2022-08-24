@@ -29,7 +29,7 @@ class Database:
     def _get(self, database: str):
         pass
 
-    def update_playlists(self, data: dict):
+    def _update_playlists(self, data: dict):
         records = [x for x in data.items()]  # [(id, name), (id, name)]
 
         self.cursor.execute(
@@ -43,9 +43,9 @@ class Database:
 
         logger.info("Updated user playlists.")
 
-        self.update_hotkeys([x[0] for x in records])
+        self._update_hotkeys([x[0] for x in records])
 
-    def update_hotkeys(self, data: list):
+    def _update_hotkeys(self, data: list):
 
         self.cursor.execute("SELECT * FROM hotkeys")
         hotkey_data = self.cursor.fetchall()
@@ -99,3 +99,13 @@ class Database:
         self.cursor.execute("SELECT * FROM hotkeys WHERE id=?", (id,))
 
         return self.cursor.fetchone()
+
+    def update_hotkey(self, id, data):
+        self.cursor.execute(
+            """UPDATE hotkeys
+               SET hotkey = ?
+               WHERE id = ?""",
+            (data, id),
+        )
+
+        self.db.commit()

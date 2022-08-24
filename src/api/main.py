@@ -35,7 +35,7 @@ class SpotiLikeAPI:
 
     def run(self):
         playlists: dict = self.get_user_playlists()
-        self.db.update_playlists(data=playlists)
+        self.db._update_playlists(data=playlists)
 
     def error(self, e=None):
         print("error")

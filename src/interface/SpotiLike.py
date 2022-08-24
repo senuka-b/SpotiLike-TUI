@@ -2,13 +2,13 @@ import asyncio
 
 from api.database import Database
 from api.main import SpotiLikeAPI
+from api.utils import format_hotkey
 
 from textual.app import App
 from textual.widgets import Header, Footer, Placeholder
-
+from textual.message import Message
 
 from .widgets import CMD, PlaylistView, MainView
-from .commands import command_list
 
 
 class SpotiLike(App):
@@ -39,10 +39,18 @@ class SpotiLike(App):
         self.command_area = CMD()
         self.playlists_view = PlaylistView(db=self.db)
         self.status = Placeholder()  # TODO Status
-        self.main_view = MainView()  # TODO # DOING
-
+        self.main_view = MainView()
         await self.view.dock(self.status, size=25, edge="right")
         await self.view.dock(self.playlists_view, size=25, edge="left", name="sidebar")
         await self.view.dock(self.command_area, edge="bottom", size=3)
 
         await self.view.dock(self.main_view, edge="top")
+
+    def handle_text_input(self, message: Message):
+        matched = format_hotkey.match(message.sender.value)
+        formatted = format_hotkey.format(matched)
+
+        self.db.update_hotkey(id=message.sender.name, data=formatted)
+
+    def handle_cmd(self, message: Message):
+        ...

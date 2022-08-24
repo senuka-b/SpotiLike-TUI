@@ -117,24 +117,31 @@ class MultipleWidgetsWindowView(View, layout=VerticalLayout):
         await self.arrange_widgets()
 
 
-from .input import CMD
+from .input import PlaylistInput
 
 
 class PlaylistView(ScrollView):
     def __init__(self, db, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.db = db
-        # self.widgets_list = [
-        #     PlaylistButton(
-        #         ("Liked Songs", self.db.get_hotkeys("liked_songs")[1]),
-        #         "liked_songs",
-        #     )
-        # ] + [
-        #     PlaylistButton((x[1], self.db.get_hotkeys(x[0])[1]), x[0])
-        #     for x in self.db.get_playlists()
-        # ]
 
-        self.widgets_list = [*[CMD() for i in range(30)]]
+        self.widgets_list = [
+            *[
+                PlaylistInput(
+                    playlist_id="liked_songs",
+                    playlist_name="Liked songs",
+                    hotkey=self.db.get_hotkeys("liked_songs")[1],
+                )
+            ]
+            + [
+                PlaylistInput(
+                    playlist_id=playlist[0],
+                    playlist_name=playlist[1],
+                    hotkey=self.db.get_hotkeys(playlist[0])[1],
+                )
+                for playlist in self.db.get_playlists()
+            ]
+        ]
 
         self.window = MultipleWidgetsWindowView(self.widgets_list)
 
@@ -156,27 +163,3 @@ class PlaylistView(ScrollView):
     async def remove_widget(self, widget: Widget):
         await self.window.remove_widget(widget)
         self.refresh_all()
-
-
-class PlaylistButton(Button):
-    mouse_over = Reactive(False)
-
-    # def __init__(self, label=None, name=None, style=None, hotkey=None, *args, **kwargs):
-    #     super().__init__()
-    #     self.label = label
-    #     self.hotkey = hotkey
-    #     self.name = name
-    #     self.style = style
-
-    def render(self) -> Panel:
-        return Panel(
-            f"[b]{self.label[1]}[/b]",
-            style=("on bright_yellow" if self.mouse_over else "cyan"),
-            title=self.label[0],
-        )
-
-    def on_enter(self) -> None:
-        self.mouse_over = True
-
-    def on_leave(self) -> None:
-        self.mouse_over = False
