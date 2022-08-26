@@ -5,7 +5,7 @@ from loguru import logger
 
 class Database:
     def __init__(self):
-        self.db = sqlite3.connect("database.db")
+        self.db = sqlite3.connect("database.db", check_same_thread=False)
         self.cursor = self.db.cursor()
 
         self.cursor.execute(
@@ -99,6 +99,11 @@ class Database:
         self.cursor.execute("SELECT * FROM hotkeys WHERE id=?", (id,))
 
         return self.cursor.fetchone()
+
+    def get_all_hotkeys(self):
+        self.cursor.execute("SELECT * FROM hotkeys")
+
+        return self.cursor.fetchall()
 
     def update_hotkey(self, id, data):
         self.cursor.execute(

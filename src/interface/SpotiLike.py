@@ -1,7 +1,5 @@
-import asyncio
-
 from api.database import Database
-from api.main import SpotiLikeAPI
+from api.main import SpotifyAPI
 from api.utils import format_hotkey
 
 from textual.app import App
@@ -17,7 +15,7 @@ class SpotiLike(App):
 
         self.db = Database()
 
-        # self.api = SpotiLikeAPI()
+        # self.api = SpotifyAPI()
         # self.api.run()
 
     async def on_load(self):
@@ -40,6 +38,7 @@ class SpotiLike(App):
         self.playlists_view = PlaylistView(db=self.db)
         self.status = Placeholder()  # TODO Status
         self.main_view = MainView()
+
         await self.view.dock(self.status, size=25, edge="right")
         await self.view.dock(self.playlists_view, size=25, edge="left", name="sidebar")
         await self.view.dock(self.command_area, edge="bottom", size=3)

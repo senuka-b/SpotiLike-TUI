@@ -1,25 +1,11 @@
 from dotenv import load_dotenv
 from spotipy import Spotify, SpotifyOAuth
 
-
 from loguru import logger
 from .database import Database
 
-from rich.pretty import pprint
-from pynput import keyboard
-from threading import Thread
 
-
-class Hotkey(Thread):
-    def __init__(self):
-        pass
-
-    def run(self):
-        self.hotkeys = keyboard.GlobalHotKeys({"<ctrl>+l": lambda: print("Received")})
-        self.hotkeys.start()
-
-
-class SpotiLikeAPI:
+class SpotifyAPI:
     def __init__(self):
         load_dotenv()
         self.db = Database()
@@ -29,7 +15,7 @@ class SpotiLikeAPI:
         try:
             self.username = self.sp.me()["display_name"]
         except Exception as e:
-            raise
+            raise e
 
         logger.info(f"Client authorised with username {self.username}")
 
@@ -63,4 +49,4 @@ class SpotiLikeAPI:
 
 
 if __name__ == "__main__":
-    SpotiLikeAPI().run()
+    SpotifyAPI().run()
