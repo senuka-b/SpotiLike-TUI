@@ -1,0 +1,8 @@
+textual
+textual-inputs
+pynput
+loguru
+pyfiglet
+spotipy
+fuzzywuzzy
+dotenv
