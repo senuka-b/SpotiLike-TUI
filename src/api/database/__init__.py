@@ -94,6 +94,10 @@ class Database:
 
         return all_playlists
 
+    def get_playlist_by_id(self, id: str):
+        self.cursor.execute("SELECT * FROM playlists WHERE id=?", (id,))
+        return self.cursor.fetchone()
+
     def get_hotkeys(self, id):
 
         self.cursor.execute("SELECT * FROM hotkeys WHERE id=?", (id,))

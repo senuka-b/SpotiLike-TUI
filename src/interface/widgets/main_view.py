@@ -38,17 +38,13 @@ class MainView(ScrollView):
                             -> [green_yellow]f[/green_yellow]
                 >> [light_cyan1]I don't want to invoke a playlist with any key[/light_cyan1]
                             -> [green_yellow]Just leave it blank or 'none'[/green_yellow]
-        
-        [cyan1]What's on the right side?[/cyan1]
-        
-            > [dark_slate_gray3]The right hand side pane is a quick control center.[/dark_slate_gray3]
-            
-                >> [light_cyan1]It consists of buttons for starting the process, stopping it or restarting, etc.[/light_cyan1]
 
         
         [cyan1]What commands can I use[/cyan1]
         
             > [dark_slate_gray3]To see a list of available commands, type [bright_yellow]help[/bright_yellow] in the command area and hit enter[/dark_slate_gray3]
+            
+            :warning: Not implemented.
 """
 
         return Text.from_markup(text)
