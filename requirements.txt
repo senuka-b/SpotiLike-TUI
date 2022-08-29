@@ -5,4 +5,4 @@ loguru
 pyfiglet
 spotipy
 fuzzywuzzy
-dotenv
+python-dotenv

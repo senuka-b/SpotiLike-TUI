@@ -1,7 +1,6 @@
-from interface.SpotiLike import SpotiLike
-from api.main import SpotiLikeWorker
+from .api.main import SpotiLikeWorker
+from .interface.SpotiLike import SpotiLike
 
-from loguru import logger
 
 import argparse, sys
 
