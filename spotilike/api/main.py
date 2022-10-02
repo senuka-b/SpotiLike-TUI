@@ -13,7 +13,20 @@ class SpotifyAPI:
         load_dotenv()
         self.db = Database()
 
-        self.sp = Spotify(auth_manager=SpotifyOAuth())
+        self.sp = Spotify(
+            auth_manager=SpotifyOAuth(
+                scope=[
+                    "user-read-playback-state",
+                    "user-library-modify",
+                    "user-library-read",
+                    "playlist-read-private",
+                    "playlist-modify-private",
+                    "playlist-modify-public",
+                    "user-read-currently-playing",
+                    "user-read-private",
+                ]
+            )
+        )
 
         try:
             self.username = self.sp.me()["display_name"]

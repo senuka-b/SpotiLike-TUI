@@ -1,5 +1,5 @@
-from .api.main import SpotiLikeWorker
-from .interface.SpotiLike import SpotiLike
+from api.main import SpotiLikeWorker
+from interface.SpotiLike import SpotiLike
 
 
 import argparse, sys

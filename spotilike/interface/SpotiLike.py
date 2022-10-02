@@ -15,8 +15,8 @@ class SpotiLike(App):
 
         self.db = Database()
 
-        # self.api = SpotifyAPI()
-        # self.api.run()
+        self.api = SpotifyAPI()
+        self.api.run()
 
     async def on_load(self):
 
@@ -29,10 +29,10 @@ class SpotiLike(App):
         await self.command_area.focus()
 
     async def on_mount(self):
-        # await self.view.dock(Footer(), edge="bottom")
-        # await self.view.dock(
-        #     Header(tall=False, style="dark_goldenrod on black"), edge="top"
-        # )
+        await self.view.dock(Footer(), edge="bottom")
+        await self.view.dock(
+            Header(tall=False, style="dark_goldenrod on black"), edge="top"
+        )
 
         self.command_area = CMD()
         self.playlists_view = PlaylistView(db=self.db)
