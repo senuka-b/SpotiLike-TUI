@@ -1,7 +1,7 @@
 from textual_inputs import TextInput
 from textual.reactive import Reactive
 
-from api.utils.format_hotkey import unformat
+from ...api.utils.format_hotkey import unformat
 
 
 class CMD(TextInput):

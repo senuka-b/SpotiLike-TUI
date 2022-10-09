@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from spotipy import Spotify, SpotifyOAuth
+from spotipy import Spotify, SpotifyPKCE
 from pynput import keyboard
 
 from loguru import logger
@@ -14,7 +14,9 @@ class SpotifyAPI:
         self.db = Database()
 
         self.sp = Spotify(
-            auth_manager=SpotifyOAuth(
+            auth_manager=SpotifyPKCE(
+                client_id="d3bd878bdc174094b7ff3379d7a90613",
+                redirect_uri="http://localhost:8080",
                 scope=[
                     "user-read-playback-state",
                     "user-library-modify",
@@ -24,7 +26,7 @@ class SpotifyAPI:
                     "playlist-modify-public",
                     "user-read-currently-playing",
                     "user-read-private",
-                ]
+                ],
             )
         )
 

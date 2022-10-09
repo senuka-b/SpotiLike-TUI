@@ -1,6 +1,6 @@
-from api.database import Database
-from api.main import SpotifyAPI
-from api.utils import format_hotkey
+from ..api.database import Database
+from ..api.main import SpotifyAPI
+from ..api.utils import format_hotkey
 
 from textual.app import App
 from textual.widgets import Header, Footer, Placeholder
