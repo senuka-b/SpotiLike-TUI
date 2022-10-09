@@ -6,7 +6,7 @@ from textual.app import App
 from textual.widgets import Header, Footer, Placeholder
 from textual.message import Message
 
-from .widgets import CMD, PlaylistView, MainView
+from .widgets import CMD, PlaylistView, MainView, QuickAccess
 
 
 class SpotiLike(App):
@@ -36,10 +36,10 @@ class SpotiLike(App):
 
         self.command_area = CMD()
         self.playlists_view = PlaylistView(db=self.db)
-        self.status = Placeholder()  # TODO Status
+        self.quick_access = QuickAccess()
         self.main_view = MainView()
 
-        await self.view.dock(self.status, size=25, edge="right")
+        await self.view.dock(self.quick_access, size=25, edge="right")
         await self.view.dock(self.playlists_view, size=25, edge="left", name="sidebar")
         await self.view.dock(self.command_area, edge="bottom", size=3)
 
