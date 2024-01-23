@@ -1,4 +1,4 @@
-from distutils.cmd import Command
+
 from ..api.database import Database
 from ..api.main import SpotifyAPI
 from ..api.utils import format_hotkey

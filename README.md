@@ -51,7 +51,7 @@ ___
 This app basically allows you to have control over your _playlists_ and _liked songs_ library through your keyboard. This means that, you can ❤️ like the current playing song with a custom keyboard shortcut or save that song into a playlist with a custom keyboard shortcut.
 
 
-The reason for writing this script is because I found it troublesome having to return to the Spotify application to save the current playing track to my collection of songs which indeed interupted my workflow. As an avid Spotify enjoyer I do this too often. The most annoying situation I've found myself in this issue is when I'm gaming.
+The reason for writing this script is because I found it troublesome having to return to the Spotify application to save the current playing track to my collection of songs which indeed interupted my workflow. As an avid Spotify enjoyer I do this too often. The most annoying place I've found myself in this issue is when I'm gaming.
 
 When I found out Spotify itself doesn't provide this functionality, I tried using other solutions and none of them satisfied all my needs. So I decided to come up with my own solution and here it is. I've already made multiple versions of this app(as a gui, etc) in the past but I decided that a TUI for this sort of application would be ideal for the purpose of configuration.
 
@@ -105,3 +105,19 @@ $ spotilike
 This mode would actually start up the hotkey process. You would be able to see logs of what's happening in this manner:
 
 ![logs](./readme/app.png)
+
+
+# TODO:
+
+- Add notification support
+- Add hide to system tray functionality
+- Add commands
+
+    - help
+    - download 
+    - autosave
+    - export_track_list
+    - logout
+    - reset_database
+    - autobackup
+    - home
