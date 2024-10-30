@@ -16,7 +16,7 @@ class SpotifyAPI:
         self.sp = Spotify(
             auth_manager=SpotifyPKCE(
                 client_id="d3bd878bdc174094b7ff3379d7a90613",
-                redirect_uri="http://localhost:8080",
+                redirect_uri="http://localhost:9000",
                 scope=[
                     "user-read-playback-state",
                     "user-library-modify",
